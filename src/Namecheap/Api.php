@@ -20,7 +20,7 @@ class Api {
 	public $userName;
 	public $clientIp;
 	public $curl_options;
-	public $returnType = 'xml';
+	public $returnType = 'string';
 
 	public function __construct() {
 		$num_args = func_num_args();
@@ -64,11 +64,23 @@ class Api {
 	}
 
 	/*API call method for sending requests using GET*/
+	/**
+	 * @param $command
+	 * @param array $data
+	 * @return array|bool|\SimpleXMLElement|string
+	 * @throws \Exception
+	 */
 	public function get($command, array $data = []) {
 		return $this->request($command, $data, 'get');
 	}
 
 	/*API call method for sending requests using POST*/
+	/**
+	 * @param $command
+	 * @param array $data
+	 * @return array|bool|\SimpleXMLElement|string
+	 * @throws \Exception
+	 */
 	public function post($command, array $data = []) {
 		return $this->request($command, $data, 'post');
 	}
@@ -86,6 +98,13 @@ class Api {
 		return $reqFields;
 	}
 
+	/**
+	 * @param $command
+	 * @param array $data
+	 * @param string $type
+	 * @return array|bool|\SimpleXMLElement|string
+	 * @throws \Exception
+	 */
 	protected function request($command, array $data = [], $type='get') {
 		if (!isset($this->apiUser) || !isset($this->apiKey) || !isset($this->clientIp)) {
 			throw new AuthenticationException('Authentication information must be provided.');
@@ -114,7 +133,7 @@ class Api {
         if (isset($this->curl_options) && is_array($this->curl_options)) {
             $curl_options = array_replace($default_curl_options, $this->curl_options);
         }
-        $user_agent = __FILE__;
+
         $ch = curl_init();
         curl_setopt_array($ch, $curl_options);
 
@@ -131,11 +150,10 @@ class Api {
 
         $xmlData = curl_exec($ch);
         $error = curl_error($ch);
-        $information = curl_getinfo($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if (in_array($http_code, [401, 403])) {
-            throw new UnauthorizedException('No Permission to perform this request');
+            throw new AuthenticationException('No Permission to perform this request');
         }
 
         if(!empty($error)) {
@@ -143,10 +161,14 @@ class Api {
     	}
         
         if ($this->returnType === 'json') {
-        	return json_encode(Xml::createArray($xmlData));
+        	$xml = simplexml_load_string($xmlData);
+        	return json_encode($xml);
         } else if ($this->returnType === 'array') {
         	return Xml::createArray($xmlData);
-        }
+        } else if ($this->returnType === 'xml') {
+			return simplexml_load_string($xmlData);
+		}
+
         return $xmlData;
 	}
 }

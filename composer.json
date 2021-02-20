@@ -20,6 +20,10 @@
         }
     },
     "require": {
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "ext-simplexml": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-dom": "*"
     }
 }

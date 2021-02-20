@@ -64,8 +64,6 @@ class Xml {
         $output = [];
         switch ($node->nodeType) {
             case XML_CDATA_SECTION_NODE:
-                $output = trim($node->textContent);
-                break;
             case XML_TEXT_NODE:
                 $output = trim($node->textContent);
                 break;
