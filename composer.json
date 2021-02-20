@@ -1,5 +1,5 @@
 {
-    "name": "naturalbuild/namecheap-sdk",
+    "name": "gotcreations/namecheap-sdk",
     "description": "SDK library for Namecheap APIs",
     "type": "library",
     "license": "MIT",
@@ -8,6 +8,10 @@
         {
             "name": "Saddam Hossain",
             "email": "saddamrhossain@gmail.com"
+        },
+        {
+            "name": "Andersson Acosta",
+            "email": "ander7agar@gmail.com"
         }
     ],
     "autoload": {
