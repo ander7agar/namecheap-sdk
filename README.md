@@ -1,9 +1,9 @@
 Namecheap SDK for APIs
 =======================
 
-[![Latest Version](https://img.shields.io/badge/release-v1.0-blue.svg)]()
-[![Build Status](https://img.shields.io/badge/build-error-lightgrey.svg)]()
-[![Total Downloads](https://img.shields.io/badge/downloads-1k-green.svg)]()
+[![Latest Stable Version](https://poser.pugx.org/gotcreations/namecheap-sdk/v)](//packagist.org/packages/gotcreations/namecheap-sdk) 
+[![Total Downloads](https://poser.pugx.org/gotcreations/namecheap-sdk/downloads)](//packagist.org/packages/gotcreations/namecheap-sdk) 
+[![Latest Unstable Version](https://poser.pugx.org/gotcreations/namecheap-sdk/v/unstable)](//packagist.org/packages/gotcreations/namecheap-sdk) [![License](https://poser.pugx.org/gotcreations/namecheap-sdk/license)](//packagist.org/packages/gotcreations/namecheap-sdk)
 
 Namecheap SDK is a PHP lib that makes it easy to manage Namecheap APIs.
 
@@ -109,7 +109,7 @@ curl -sS https://getcomposer.org/installer | php
 Next, run the Composer command to install the latest stable version of Namecheap-sdk:
 
 ```bash
-php composer.phar require saddamrhossain/namecheap-sdk
+php composer.phar require gotcreations/namecheap-sdk
 ```
 
 After installing, you need to require Composer's autoloader:
@@ -129,4 +129,4 @@ composer.phar update
 
 | Version | Status     | Packagist           | Namespace    | Repo                | Docs                | PSR-7 | PHP Version |
 |---------|------------|---------------------|--------------|---------------------|---------------------|-------|-------------|
-| 1.x     | ---        | `saddamrhossain/namecheap-sdk`     | `Namecheap`     | - | - | No    | >= 5.6    |
+| 1.x     | ---        | `gotcreations/namecheap-sdk`     | `Namecheap`     | - | - | No    | >= 5.6    |
