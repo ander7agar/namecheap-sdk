@@ -34,6 +34,7 @@ class Api {
 			$this->clientIp = $client->clientIp;
 			$this->curl_options = $client->curl_options;
 			$this->returnType = $client->returnType;
+			$this->endPoint = $client->endPoint;
 		} else if ($num_args >= 4) {
 			$args = func_get_args();
 			$this->apiUser  = $args[0];
